@@ -1,13 +1,7 @@
 name: Validate Markdown
 
 on:
-  # Trigger the workflow on pull request
-  pull_request_target:
-    branches: 
-      - main
-    paths:
-      - '**.md'
-      - '**.ipynb'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -21,7 +15,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
       - name: Check broken Paths
         id: check-broken-paths
         uses: john0isaac/action-check-markdown@v1.1.0
@@ -39,7 +33,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
       - name: Run Check paths tracking
         id: check-paths-tracking
         uses: john0isaac/action-check-markdown@v1.1.0
@@ -57,7 +51,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
       - name: Run Check URLs tracking
         id: check-urls-tracking
         uses: john0isaac/action-check-markdown@v1.1.0
@@ -75,7 +69,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
       - name: Run Check URLs Country Locale
         id: check-urls-locale
         uses: john0isaac/action-check-markdown@v1.1.0
@@ -92,7 +86,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
       - name: Run Check Broken URLs
         id: check-broken-urls
         uses: john0isaac/action-check-markdown@v1.1.0
