@@ -1,8 +1,7 @@
 name: Lock closed issue
 
-on: 
-  issues:
-    types: [closed]
+on:
+  workflow_dispatch:
 
 permissions:
   contents: read
